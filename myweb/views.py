@@ -8,6 +8,11 @@ from .models import *
 
 # Create your views here.
 def index(req):
+	if req.method == "POST":
+		getname = req.POST.get('name')
+		gettext = req.POST.get('text')
+		add = comment2(name=getname, text=gettext)
+		add.save()
 	return render(req, 'myweb/index.html')
 
 def stand(req):
